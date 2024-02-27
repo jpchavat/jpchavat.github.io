@@ -1,4 +1,5 @@
-# JP Chavat | Senior Backend Engineer | MSc in Computer Science | Economics enthusiast
+# JP Chavat
+### Senior Backend Engineer | MSc in Computer Science | Economics enthusiast
 
 Passionate backend developer, research assistant, and lifelong learner with a focus on innovative and sustainable technologies.
 
