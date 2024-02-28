@@ -5,7 +5,7 @@ theme: minima
 title: JP Chavat
 description: Senior Backend Engineer (MSc) exploring the intersection of data analysis, economic modeling, and tech-driven problem-solving (with a touch of personal perspective). Let's connect! 
 author: JP Chavat
-google_analytics: G-MPHEXVJPPH # Your actual Google Analytics Tracking ID
+# google_analytics: G-MPHEXVJPPH # Your actual Google Analytics Tracking ID
 
 # Contact & Social
 email: hey@jpchavat.com  
