@@ -6,6 +6,8 @@ lang: en
 ref: about
 ---
 
+<img src="{{ '/assets/avatar.jpg' | relative_url }}" alt="JP Chavat" width="130" height="130" style="border-radius: 50%; float: right; margin: 0 0 1rem 1.5rem; object-fit: cover;">
+
 Hey there! I'm JP — a senior engineer turned agentic engineer, builder, and entrepreneur. After 13+ years building scalable backend systems, I'm now focused on building autonomous AI systems that handle real-world tasks end-to-end.
 
 I hold a Master's in Computer Science and am currently studying Economics. I'm driven by the development of PoCs, MVPs, and R&D environments — always learning. The shift from backend to agentic AI wasn't a pivot; it was a natural evolution of the same instinct: build systems that do useful work reliably, at scale.

@@ -9,8 +9,9 @@ permalink: /es/
 {% assign lang = "es" %}
 {% assign t = site.data.i18n[lang] %}
 
-<section style="margin-bottom: 2.5rem;">
-  <p>{{ t.home_intro }}</p>
+<section style="margin-bottom: 2.5rem; display: flex; align-items: center; gap: 1.5rem;">
+  <p style="flex: 1; margin: 0;">{{ t.home_intro }}</p>
+  <img src="{{ '/assets/avatar.jpg' | relative_url }}" alt="JP Chavat" width="110" height="110" style="border-radius: 50%; flex-shrink: 0; object-fit: cover;">
 </section>
 
 {% assign posts = site.posts | where: "lang", "es" %}
