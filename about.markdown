@@ -1,6 +1,10 @@
 ---
 layout: page
 title: About Me
+description: >-
+  13+ years building scalable backend systems, now building autonomous AI
+  agents end-to-end. MSc in Computer Science, award-winning thesis, co-founder
+  of Spectra and Overlap.
 permalink: /about/
 lang: en
 ref: about

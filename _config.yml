@@ -16,6 +16,18 @@ twitter_username: jpchavat
 github_username: jpchavat
 linkedin_username: jpchavat
 
+# SEO / Open Graph
+logo: /assets/avatar.jpg
+image: /assets/og-image.jpg
+twitter:
+  username: jpchavat
+  card: summary_large_image
+social:
+  name: JP Chavat
+  links:
+    - https://www.linkedin.com/in/jpchavat
+    - https://github.com/jpchavat
+
 # Build
 markdown: kramdown
 permalink: /:year/:month/:title/
@@ -33,9 +45,11 @@ defaults:
     values:
       layout: "post"
       lang: "en"
+      image: /assets/og-image.jpg
   - scope:
       path: ""
       type: "pages"
     values:
       layout: "page"
       lang: "en"
+      image: /assets/og-image.jpg

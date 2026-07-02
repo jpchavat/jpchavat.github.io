@@ -1,6 +1,10 @@
 ---
 layout: page
 title: Sobre mí
+description: >-
+  13+ años construyendo sistemas backend escalables, hoy construyendo agentes
+  autónomos de IA de punta a punta. MSc en Ciencias de la Computación, tesis
+  premiada, co-fundador de Spectra y Overlap.
 permalink: /es/about/
 lang: es
 ref: about
