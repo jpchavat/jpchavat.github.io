@@ -1,0 +1,48 @@
+---
+layout: default
+title: JP Chavat
+lang: es
+ref: home
+permalink: /es/
+---
+
+{% assign lang = "es" %}
+{% assign t = site.data.i18n[lang] %}
+
+<section style="margin-bottom: 2.5rem;">
+  <p>{{ t.home_intro }}</p>
+</section>
+
+{% assign posts = site.posts | where: "lang", "es" %}
+{% if posts.size > 0 %}
+<section>
+  <h2 style="font-size: 1rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-faint); margin-bottom: 1rem;">{{ t.articles }}</h2>
+  <ul class="post-list">
+    {% for post in posts %}
+    <li class="post-list-item">
+      {% if post.layout == "quote" %}
+        <p class="post-list-meta">{{ post.date | date: "%B %Y" }}</p>
+        <p class="post-list-quote"><a href="{{ post.url | relative_url }}">{{ post.quote }}</a></p>
+        <p class="post-list-quote-source">{{ post.source_author }}{% if post.source_title %} — {{ post.source_title }}{% endif %}</p>
+      {% elsif post.layout == "thought" %}
+        <p class="post-list-meta">{{ post.date | date: "%B %Y" }}</p>
+        <p class="post-list-thought"><a href="{{ post.url | relative_url }}">{{ post.content | strip_html | truncatewords: 40 }}</a></p>
+      {% else %}
+        <p class="post-list-meta">
+          {{ post.date | date: "%B %Y" }}
+          {%- if post.reading_time %} &middot; ~{{ post.reading_time }} {{ t.reading_time }}{% endif -%}
+        </p>
+        <h3 class="post-list-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h3>
+        {% if post.subtitle %}
+        <p class="post-list-excerpt">{{ post.subtitle }}</p>
+        {% elsif post.excerpt %}
+        <p class="post-list-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+        {% endif %}
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

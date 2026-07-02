@@ -1,0 +1,43 @@
+---
+layout: default
+---
+{% assign lang = page.lang | default: site.lang | default: "en" %}
+
+<article class="quote-page">
+
+  <blockquote class="quote-hero">
+    <p>{{ page.quote }}</p>
+  </blockquote>
+
+  <div class="quote-source">
+    {% if page.source_author %}<strong>{{ page.source_author }}</strong>{% endif %}
+    {% if page.source_title %} — <em>{{ page.source_title }}</em>{% endif %}
+    {% if page.source_url %}<br><a href="{{ page.source_url }}" target="_blank" rel="noopener">{{ page.source_label | default: page.source_url }}</a>{% endif %}
+  </div>
+
+  {% if page.source_embed %}
+  <div class="quote-embed">
+    {{ page.source_embed }}
+  </div>
+  {% endif %}
+
+  {% if content != "" and content != nil %}
+  <hr class="post-header-rule">
+  <section class="post-content">
+    {{ content }}
+  </section>
+  {% endif %}
+
+  {% if page.tags.size > 0 %}
+  <div class="post-tags" style="margin-top: 2rem;">
+    {% for tag in page.tags %}
+    <span class="tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% include ai-disclosure.html %}
+
+  {% include post-footer.html %}
+
+</article>

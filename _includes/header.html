@@ -1,0 +1,11 @@
+{% assign lang = page.lang | default: site.lang | default: "en" %}
+{% assign t = site.data.i18n[lang] %}
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-title" href="{% if lang == 'es' %}{{ '/es/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}">{{ site.title }}</a>
+    <nav class="site-nav">
+      <a href="{% if lang == 'es' %}{{ '/es/about/' | relative_url }}{% else %}{{ '/about/' | relative_url }}{% endif %}">{{ t.about }}</a>
+      {% include lang-switcher.html %}
+    </nav>
+  </div>
+</header>

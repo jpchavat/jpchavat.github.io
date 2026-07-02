@@ -1,23 +1,41 @@
 # Site settings
-# These personalize your site. Access them in HTML via {{ site.title }}, {{ site.email }}, etc.
-
-theme: minima 
 title: JP Chavat
-description: Senior Backend Engineer (MSc) exploring the intersection of data analysis, economic modeling, and tech-driven problem-solving (with a touch of personal perspective). Let's connect! 
+description: >-
+  Senior Engineer turned Agentic Engineer (MSc). Building autonomous AI systems
+  at the intersection of agentic AI, data analysis, and economics.
 author: JP Chavat
-# google_analytics: G-MPHEXVJPPH # Your actual Google Analytics Tracking ID
+lang: en
 
-# Contact & Social
-email: hey@jpchavat.com  
-baseurl: ""              # Only if your site is in a subdirectory
-url: "https://jpchavat.com" 
+# URLs
+email: hey@jpchavat.com
+baseurl: ""
+url: "https://jpchavat.com"
+
+# Social
 twitter_username: jpchavat
 github_username: jpchavat
 linkedin_username: jpchavat
 
-# Future-proofing for content organization 
-collections:
-  blog:
-    output: true  
-  projects: 
-    output: true
+# Build
+markdown: kramdown
+permalink: /:year/:month/:title/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      lang: "en"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+      lang: "en"

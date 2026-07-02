@@ -1,0 +1,18 @@
+---
+layout: default
+---
+{% assign lang = page.lang | default: site.lang | default: "en" %}
+
+<article class="thought-page">
+
+  <p class="thought-meta">{{ page.date | date: "%B %-d, %Y" }}</p>
+
+  <div class="thought-hero">
+    {{ content }}
+  </div>
+
+  {% include ai-disclosure.html %}
+
+  {% include post-footer.html %}
+
+</article>

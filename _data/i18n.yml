@@ -1,0 +1,17 @@
+en:
+  articles: "Articles"
+  about: "About"
+  reading_time: "min read"
+  sources: "Sources"
+  switch_lang: "ES"
+  switch_lang_label: "Leer en español"
+  home_intro: "Senior Engineer turned Agentic Engineer. MSc in Computer Science, currently studying Economics. Building autonomous AI systems and exploring where agentic AI meets data analysis and economic reality."
+
+es:
+  articles: "Artículos"
+  about: "Acerca"
+  reading_time: "min de lectura"
+  sources: "Fuentes"
+  switch_lang: "EN"
+  switch_lang_label: "Read in English"
+  home_intro: "Senior Engineer devenido en Agentic Engineer. MSc en Ciencias de la Computación, cursando Economía. Construyendo sistemas autónomos de IA y explorando donde la IA agéntica se cruza con el análisis de datos y la realidad económica."

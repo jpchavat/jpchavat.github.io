@@ -1,32 +1,35 @@
 # JP Chavat
-### Senior Backend Engineer | MSc in Computer Science | Economics enthusiast
+### Senior Engineer turned Agentic Engineer | MSc in Computer Science | Economics student
 
-Passionate backend developer, research assistant, and lifelong learner with a focus on innovative and sustainable technologies.
+Builder and entrepreneur passionate about tackling complex challenges with autonomous AI systems. After 13+ years in backend engineering, now focused on agentic AI platforms, multi-agent orchestration, and scalable cloud-native solutions.
 
-## Summary 
+## Now
 
-I'm an experienced Backend Engineer (Python enthusiast!) with an MSc in Computer Science. I balance industry roles with active research contributions, thriving on designing intricate system architectures and crafting impactful systems.  Currently, I'm seeking opportunities that align with my passion for positive, tech-driven change. Let's connect! 
+* **Lead Engineer, Helixia** — Architecture and end-to-end development of an agentic automation platform
+* **Independent Contractor, Lemon.io** — AI-driven systems, multi-agent orchestration (OpenAI Agent SDK, LangGraph), automated AWS infrastructure
 
-## Experience Highlights
+## Recent Ventures
 
-* **Senior Backend Engineer, marco** From fullstack to senior backend engineer
-* **Research Assistant**  on projects focused on energy consumption analysis and public transport optimization
-* **Full-Stack Development** experience across multiple projects (multichannel contact centers, vehicle fleet management, process optimizations, etc)
+* **Spectra** (Co-Founder, 2024) — AI-powered news aggregator with vector embeddings and LLMs
+* **Overlap** (Co-Founder, 2024) — Software agency specializing in AI-driven, experience-first solutions
 
 ## Skills
-* **Backend:** Python, Flask, Django, Celery, Redis, MongoDB, MySQL, Postgres,
-* **Frontend:** TypeScript, React, Angular, RxJS
-* **Data Science:** Data analytics, Pandas, Dask, Numpy
-* **Other:** Git, AWS Essentials, OpenAI APIs
 
-## Honors & Publications 
-* **MSc in Computer Science, PEDECIBA** Best Master's Thesis Award in the category Computer Science-PEDECIBA by the National Academy of Engineering of Uruguay (ANIU) in 2023-24.
-* **Key Publications:**
-  * [ECD-UY, detailed household electricity consumption dataset of Uruguay (Springer Nature, 2022)](https://www.nature.com/articles/s41597-022-01122-x)
-  * [Nonintrusive energy disaggregation by detecting similarities in consumption patterns](https://doi.org/10.17533/udea.redin.20200370)
-  * More in my Google Scholar profile [here](https://scholar.google.com/citations?hl=en&user=6F9N5uIAAAAJ)
+* **AI & Agents:** OpenAI Agent SDK, LangGraph, Claude/Anthropic APIs, vector embeddings, semantic search, LLM orchestration
+* **Backend:** Python, Node.js, Django, Flask, Celery, Redis, PostgreSQL, DynamoDB, MongoDB
+* **Frontend:** React, Next.js, TypeScript
+* **Cloud:** AWS (certified), cloud-native architectures, automated infrastructure
+* **Data Science:** Pandas, Dask, Numpy
+
+## Honors & Publications
+
+* **MSc in Computer Science, PEDECIBA** — 1st Place, Best Thesis Award by the National Academy of Engineering of Uruguay (ANIU), 2023
+* [ECD-UY, detailed household electricity consumption dataset of Uruguay (Springer Nature, 2022)](https://www.nature.com/articles/s41597-022-01122-x)
+* [Nonintrusive energy disaggregation by detecting similarities in consumption patterns (REDIN, 2020)](https://doi.org/10.17533/udea.redin.20200370)
+* More on [Google Scholar](https://scholar.google.com/citations?hl=en&user=6F9N5uIAAAAJ) and [ResearchGate](https://www.researchgate.net/profile/Juan-Chavat)
 
 ## Contact
-* jpchavat (at) gmail (dot) com
-* [LinkedIn](https://www.linkedin.com/in/jpchavat/) 
-* [ResearchGate](https://www.researchgate.net/profile/Juan-Chavat)
+
+* hey (at) jpchavat (dot) com
+* [LinkedIn](https://www.linkedin.com/in/jpchavat/)
+* [jpchavat.com](https://jpchavat.com)

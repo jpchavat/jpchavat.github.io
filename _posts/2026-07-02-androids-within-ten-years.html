@@ -1,0 +1,295 @@
+---
+layout: thought
+title: "Androids within ten years"
+date: 2026-07-02
+lang: en
+ref: androids-ten-years
+tags: [Thoughts, AI, Robotics]
+chartjs: true
+ai_disclosure: "Claude was used to gather and aggregate public projections (Goldman Sachs, Morgan Stanley, UN population
+data) and generate the chart. The thought and interpretation are the author's."
+---
+
+<p>I wonder how long until we realize that androids will be everywhere, in every corner of our lives, within ten years.
+  What a world is coming!</p>
+
+<div class="thought-dev">
+
+  <p>The projections are already out there, and they are not shy. Goldman Sachs expects around 250,000 humanoid robot
+    shipments per year by 2030 and a $38 billion market by 2035;<a href="#fn1" class="fn-ref">[1]</a><a href="#note-a"
+      class="fn-ref">[a]</a> Morgan Stanley goes further, forecasting some 13 million humanoids in service by 2035 and
+    over 1 billion units deployed by 2050 — a $5 trillion market.<a href="#fn2" class="fn-ref">[2]</a> Even taking these
+    as directional rather than precise, the shape is clear: an exponential ramp that starts as an industrial curiosity
+    this decade and becomes a demographic-scale phenomenon the next.</p>
+
+  <div class="thought-chart">
+    <canvas id="androidsChart"></canvas>
+  </div>
+  <div class="chart-toggle-row">
+    <label class="chart-switch">
+      <input type="checkbox" id="scaleToggle" checked>
+      <span class="chart-switch-slider"></span>
+      <span class="chart-switch-label">Logarithmic Y axis</span>
+    </label>
+  </div>
+  <p class="chart-caption">Androids: installed-base projections aggregated from Goldman Sachs<a href="#fn1"
+      class="fn-ref">[1]</a> and Morgan Stanley,<a href="#fn2" class="fn-ref">[2]</a> interpolated. Humans: UN DESA,
+    <em>World Population Prospects 2024</em>, medium variant.<a href="#fn3" class="fn-ref">[3]</a> Beyond 2050, androids
+    are extrapolated with a median quantile regression on the forecasts' growth rate;<a href="#note-b"
+      class="fn-ref">[b]</a> it saturates at ~1.5 billion and never intersects the human curve — so there is no future
+    segment to cut away to. Solid dots: published figures; hollow dots: interpolated or estimated.<a href="#note-c"
+      class="fn-ref">[c]</a> Log scale.</p>
+
+  <p>The comparison with humans puts the timeline in perspective. The UN's medium-variant projection has the world
+    crossing 9 billion around 2037.<a href="#fn3" class="fn-ref">[3]</a> So in ten years (2036), roughly 20 million
+    androids against ~8.9 billion people — about 1 android for every 440 humans. In twenty years (2046), around half a
+    billion androids against ~9.4 billion people — 1 for every 19 humans. The first decade we may barely notice them;
+    the second, they become a category of inhabitant.</p>
+
+  <p>And here is the honest conclusion: even my own intuition was riding the hype bubble — "everywhere within ten years"
+    is not what the data says. But the dimension of what <em>is</em> coming needs no exaggeration. In ten years, the
+    humanoid population would compare to the population of Chile. In twenty, to the European Union. And by 2050, to the
+    current population of the entire American continent — North, Central and South combined — walking among us. Take a
+    moment with that dimension.</p>
+
+  <section class="footnotes-section">
+    <p class="footnotes-title">Notes</p>
+    <div class="footnote-item" id="note-a"><span class="footnote-num">[a]</span><span>Throughout this post,
+        <em>billion</em> follows the short scale used in English: 10<sup>9</sup> (a thousand million). Not to be
+        confused with the long-scale <em>billón</em> common in Uruguay and the Spanish-speaking world, which is
+        10<sup>12</sup> (a million million).</span></div>
+    <div class="footnote-item" id="note-b"><span class="footnote-num">[b]</span><span>The aggregated 2026–2050 forecasts
+        decelerate: annual growth falls from ~×2 early on to ~×1.2 by 2050. A regression fitted directly on log-units is
+        a straight line that ignores this bend, so both projections are instead fitted on the <em>growth rate</em> of
+        log<sub>10</sub>(units) between consecutive forecast points, then integrated forward from (2050,
+        1&nbsp;billion), with the rate floored at zero. The projection shown is a <em>quantile regression</em> (median,
+        τ&nbsp;=&nbsp;0.5, L1 loss) on that growth-rate series: the rate reaches zero around 2056 and the installed base
+        saturates at ~1.47&nbsp;billion. Under this extrapolation the android curve never intersects the human
+        population curve — not by 2060, and not at any later date either, since the UN medium variant stays above
+        9&nbsp;billion through 2100 while the androids plateau. A naive extrapolation for illustration only.</span>
+    </div>
+    <div class="footnote-item" id="note-c"><span class="footnote-num">[c]</span><span>The 2026 starting point (~50,000
+        units) is not a published figure: it is a back-cast from Goldman Sachs' 2030 shipment ramp,<a href="#fn1"
+          class="fn-ref">[1]</a> consistent with the scale of current pilot deployments. Treat it as an
+        order-of-magnitude estimate.</span></div>
+  </section>
+
+  <section class="footnotes-section">
+    <p class="footnotes-title">Sources</p>
+    <div class="footnote-item" id="fn1"><span class="footnote-num">[1]</span><span>Goldman Sachs Research — <em>The
+          global market for humanoid robots could reach $38 billion by 2035</em> (2024). <a
+          href="https://www.goldmansachs.com/insights/articles/the-global-market-for-robots-could-reach-38-billion-by-2035"
+          target="_blank" rel="noopener">goldmansachs.com</a>.</span></div>
+    <div class="footnote-item" id="fn2"><span class="footnote-num">[2]</span><span>Morgan Stanley Research —
+        <em>Humanoid Robot Market Expected to Reach $5 Trillion by 2050</em> (2025). ~13 million humanoids in service by
+        2035; 1 billion+ units by 2050. <a
+          href="https://www.morganstanley.com/insights/articles/humanoid-robot-market-5-trillion-by-2050"
+          target="_blank" rel="noopener">morganstanley.com</a>.</span></div>
+    <div class="footnote-item" id="fn3"><span class="footnote-num">[3]</span><span>United Nations, Department of
+        Economic and Social Affairs, Population Division — <em>World Population Prospects 2024</em>, medium variant. 8.5
+        billion projected for 2030; 9 billion crossed around 2037. <a href="https://population.un.org/wpp/"
+          target="_blank" rel="noopener">population.un.org/wpp</a>.</span></div>
+  </section>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const css = getComputedStyle(document.documentElement);
+    const accent = css.getPropertyValue("--color-accent").trim() || "#c05621";
+    const muted = css.getPropertyValue("--color-muted").trim() || "#666";
+    const faint = css.getPropertyValue("--color-faint").trim() || "#999";
+
+    // Draws an I-beam gap indicator at the right edge, between the two 2060
+    // endpoints — the log scale makes the curves look closer than they are.
+    const gapIndicatorPlugin = {
+      id: "gapIndicator",
+      afterDraw: function (chart) {
+        // only meaningful on the log scale, where the gap is visually compressed
+        if (chart.options.scales.y.type === "linear") return;
+        const ctx = chart.ctx;
+        const ys = chart.scales.y;
+        const xs = chart.scales.x;
+
+        const xr = xs.right - 8;
+        const cap = 6; // half-width of the horizontal caps
+        const yTop = ys.getPixelForValue(9.96e9) + 4;
+        const yBot = ys.getPixelForValue(1.47e9) - 4;
+
+        ctx.save();
+        ctx.strokeStyle = faint;
+        ctx.lineWidth = 1.5;
+        // top cap
+        ctx.beginPath();
+        ctx.moveTo(xr - cap, yTop);
+        ctx.lineTo(xr + cap, yTop);
+        // vertical line
+        ctx.moveTo(xr, yTop);
+        ctx.lineTo(xr, yBot);
+        // bottom cap
+        ctx.moveTo(xr - cap, yBot);
+        ctx.lineTo(xr + cap, yBot);
+        ctx.stroke();
+
+        const narrow = (xs.right - xs.left) < 450;
+        ctx.fillStyle = faint;
+        ctx.font = (narrow ? "10px" : "11px") + " sans-serif";
+        ctx.textAlign = "right";
+        const yMid = (yTop + yBot) / 2;
+        // gap label: kept inside the beam's vertical span, left of the beam
+        if (narrow) {
+          ctx.fillText("gap ≈ 8.5B", xr - cap - 6, yMid);
+          ctx.fillText("(~7 humans/android)", xr - cap - 6, yMid + 12);
+        } else {
+          ctx.fillText("gap ≈ 8.5B (~7 humans per android)", xr - cap - 6, yMid + 4);
+        }
+
+        // plateau label: below the dotted projection line, well away from the gap text
+        ctx.fillStyle = accent;
+        ctx.textAlign = "center";
+        ctx.fillText("plateau ≈ 1.47B", xs.getPixelForValue(2054), yBot + 18);
+        ctx.restore();
+      }
+    };
+
+    const androidsChart = new Chart(document.getElementById("androidsChart"), {
+      type: "line",
+      plugins: [gapIndicatorPlugin],
+      data: {
+        datasets: [
+          {
+            label: "Humans (UN WPP 2024, medium variant)",
+            data: [
+              { x: 2026, y: 8.26e9, src: "UN WPP 2024, medium variant" },
+              { x: 2030, y: 8.5e9, src: "UN WPP 2024, medium variant" },
+              { x: 2035, y: 8.85e9, interp: true, src: "UN WPP 2024, medium variant (interpolated)" },
+              { x: 2040, y: 9.1e9, interp: true, src: "UN WPP 2024, medium variant (interpolated)" },
+              { x: 2046, y: 9.37e9, interp: true, src: "UN WPP 2024, medium variant (interpolated)" },
+              { x: 2050, y: 9.6e9, src: "UN WPP 2024, medium variant" },
+              { x: 2055, y: 9.78e9, interp: true, src: "UN WPP 2024, medium variant (interpolated)" },
+              { x: 2060, y: 9.96e9, src: "UN WPP 2024, medium variant (10B crossed ~2061)" }
+            ],
+            borderColor: muted,
+            backgroundColor: "transparent",
+            borderDash: [6, 4],
+            pointRadius: 3,
+            pointBorderColor: muted,
+            pointBackgroundColor: function (ctx) {
+              return ctx.raw && ctx.raw.interp ? "transparent" : muted;
+            },
+            tension: 0.3
+          },
+          {
+            label: "Androids (installed base, forecasts)",
+            data: [
+              { x: 2026, y: 5e4, interp: true, src: "Back-cast from Goldman Sachs 2030 ramp (see note [c])" },
+              { x: 2030, y: 1e6, src: "Goldman Sachs: ~250K shipments/yr by 2030, cumulated" },
+              { x: 2035, y: 1.3e7, src: "Morgan Stanley: 13M in service by 2035" },
+              { x: 2036, y: 2e7, interp: true, src: "Interpolated between Morgan Stanley 2035 and 2050" },
+              { x: 2040, y: 1.2e8, interp: true, src: "Interpolated between Morgan Stanley 2035 and 2050" },
+              { x: 2046, y: 5e8, interp: true, src: "Interpolated between Morgan Stanley 2035 and 2050" },
+              { x: 2050, y: 1e9, src: "Morgan Stanley: 1B+ units by 2050" }
+            ],
+            borderColor: accent,
+            backgroundColor: "transparent",
+            pointRadius: 3,
+            pointBorderColor: accent,
+            pointBackgroundColor: function (ctx) {
+              return ctx.raw && ctx.raw.interp ? "transparent" : accent;
+            },
+            tension: 0.3
+          },
+          {
+            label: "Androids — quantile reg. projection (median)",
+            // Median (L1) quantile regression on the same growth-rate series,
+            // integrated forward from (2050, 1e9). Saturates ~1.47B around 2056.
+            data: (function () {
+              const out = [];
+              const s0 = 0.0562, zero = 2055.9, slope = s0 / (zero - 2050);
+              let Y = 9.0;
+              for (let t = 2050; t <= 2060; t++) {
+                out.push({ x: t, y: Math.pow(10, Y), src: "Quantile regression (median) extrapolation, this post" });
+                Y += Math.max(s0 - slope * (t + 0.5 - 2050), 0);
+              }
+              return out;
+            })(),
+            borderColor: accent,
+            backgroundColor: "transparent",
+            borderDash: [1, 5],
+            borderWidth: 1.5,
+            pointRadius: 0,
+            tension: 0.3
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            labels: {
+              color: muted,
+              usePointStyle: true,
+              pointStyleWidth: 30,
+              generateLabels: function (chart) {
+                const labels = Chart.defaults.plugins.legend.labels.generateLabels(chart);
+                labels.forEach(function (l) { l.pointStyle = "line"; });
+                return labels;
+              }
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: function (ctx) {
+                const v = ctx.parsed.y;
+                const fmt = v >= 1e9 ? (v / 1e9).toFixed(1) + "B"
+                  : v >= 1e6 ? (v / 1e6).toFixed(0) + "M"
+                    : (v / 1e3).toFixed(0) + "K";
+                return ctx.dataset.label + ": " + fmt;
+              },
+              afterLabel: function (ctx) {
+                const src = ctx.raw && ctx.raw.src;
+                return src ? "Source: " + src : "";
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            type: "logarithmic",
+            ticks: {
+              color: faint,
+              callback: function (v) {
+                const fmt = function (n) {
+                  return n >= 1e12 ? n / 1e12 + "T" : n >= 1e9 ? n / 1e9 + "B" : n >= 1e6 ? n / 1e6 + "M" : n >= 1e3 ? n / 1e3 + "K" : n;
+                };
+                if (this.type === "linear" || this.chart.options.scales.y.type === "linear") {
+                  return fmt(v);
+                }
+                if ([1e5, 1e6, 1e7, 1e8, 1e9, 1e10, 1e11, 1e12].includes(v)) return fmt(v);
+                return null;
+              }
+            },
+            grid: { color: "rgba(128,128,128,0.12)" }
+          },
+          x: {
+            type: "linear",
+            min: 2026,
+            max: 2060,
+            ticks: { color: faint, stepSize: 4, callback: function (v) { return v; } },
+            grid: { display: false }
+          }
+        }
+      }
+    });
+
+    const toggle = document.getElementById("scaleToggle");
+    toggle.addEventListener("change", function () {
+      const yScale = androidsChart.options.scales.y;
+      const toLog = toggle.checked;
+      yScale.type = toLog ? "logarithmic" : "linear";
+      if (!toLog) { yScale.min = 0; } else { delete yScale.min; }
+      androidsChart.update();
+    });
+  });
+</script>

@@ -1,0 +1,308 @@
+---
+layout: post
+title: "Soberanía energética, datos y un poco de IA"
+subtitle: "Una decisión política de 2006 que se puede ver hoy en un gráfico de barriles de petróleo — y cómo llegué a eso en minutos."
+date: 2026-03-15
+reading_time: 8
+tags: [Economía, Energía, Uruguay, AI-assisted, Data analysis]
+chartjs: true
+lang: es
+ref: energy-sovereignty
+ai_disclosure: "Claude fue usado como colaborador de investigación: búsqueda y normalización de datos (MIEM, Banco Mundial, EIA), generación de visualizaciones, y revisión del análisis. Las preguntas, el criterio editorial y la interpretación son del autor."
+---
+
+<p>Empecé con una pregunta simple: ¿cuántos barriles de petróleo importa Uruguay por año, y se puede ver la transición energética en ese número? No en reportes institucionales, sino en los datos crudos, año a año, comparados con el crecimiento económico del país.</p>
+<p>Lo que encontré vale la pena contarlo. Y cómo llegué a eso también.</p>
+
+<h2>El rol de la IA en este análisis</h2>
+<p>Usé Claude como colaborador de investigación, no como oráculo. La diferencia importa: la IA es buena buscando, sintetizando y visualizando datos, pero necesita que la persona al otro lado sepa <em>qué preguntar</em> y cuándo sospechar de una respuesta. Con ese marco, el proceso fue sorprendentemente rápido: datos de importaciones del MIEM y la CIA World Factbook,<a href="#fn1" class="fn-ref">[1]</a> datos históricos de GDP del Banco Mundial,<a href="#fn2" class="fn-ref">[2]</a> hitos energéticos de fuentes oficiales uruguayas<a href="#fn3" class="fn-ref">[3]</a> — todo normalizado y graficado en minutos.</p>
+<p>Sin criterio propio, la IA genera texto plausible sobre cualquier cosa. Con criterio, es un multiplicador de productividad enorme. Este artículo es un ejemplo de eso.</p>
+
+<h2>La historia en los datos</h2>
+<p>Uruguay no produce petróleo. Ningún barril.<a href="#fn4" class="fn-ref">[4]</a> El U.S. Department of Commerce lo dice sin rodeos: <em>"the country does not produce hydrocarbons domestically and relies entirely on imports."</em> ANCAP opera la única refinería del país (La Teja, Montevideo), pero todo el crudo que procesa llega de afuera, principalmente de Nigeria, Estados Unidos y Argentina. En 2025, el gobierno autorizó exploración offshore con posibilidades de producción después de 2030, pero por ahora, cero.</p>
+<p>Con ese contexto, en 2000 Uruguay importaba ~33.000 barriles diarios. Para 2007 ya eran más de 52.000: la economía crecía fuerte post-crisis 2002 y el petróleo acompañaba.<a href="#fn5" class="fn-ref">[5]</a> La correlación GDP-barriles era casi perfecta. El pico llegó en 2012 con ~65.000 bbl/día, y acá hay algo importante que explicar.</p>
+
+<p>Uruguay genera buena parte de su electricidad con represas hidroeléctricas — históricamente entre el 40% y 60% de la matriz eléctrica.<a href="#fn6" class="fn-ref">[6]</a> Cuando llueve poco y los embalses bajan, UTE (la eléctrica estatal) necesita compensar esa generación con centrales térmicas que queman gasoil y fueloil — ambos derivados del petróleo importado. En 2012 confluyen tres factores: una sequía severa que obliga a las térmicas a operar a máxima capacidad, un rebote económico post-crisis global con alta demanda de combustibles, y operaciones de stockpiling de ANCAP. El resultado: el pico de importaciones más alto de la historia reciente del país.<a href="#fn7" class="fn-ref">[7]</a></p>
+
+<p>Después de 2012 pasa algo estructuralmente diferente.</p>
+
+<div class="callout">
+  <strong>El dato clave:</strong> Entre 2012 y 2016, las importaciones de petróleo cayeron un 46% — de 65.000 a 35.000 bbl/día — mientras la economía <em>seguía creciendo</em>. Esa divergencia no ocurre sola.
+</div>
+
+<!-- CHART -->
+<div class="artifact-block">
+  <div class="artifact-label">
+    <span>Visualización interactiva — 50 años de datos, hover para valores</span>
+    <div class="toggle-group">
+      <button class="toggle-btn active" id="btn-index" onclick="setMode('index')">Índice</button>
+      <button class="toggle-btn" id="btn-real" onclick="setMode('real')">Valores reales</button>
+    </div>
+  </div>
+  <div class="artifact-inner">
+    <div class="chart-legend">
+      <span><span class="leg-swatch" style="background:#D85A30;"></span>GDP — eje izquierdo</span>
+      <span><span class="leg-swatch" style="background:#5F5E5A;"></span>Petróleo importado — eje derecho</span>
+      <span><span style="width:14px;height:2px;background:#1D9E75;display:inline-block;border-radius:1px;"></span>1.er parque eólico (2008)</span>
+      <span><span style="width:14px;height:0;border-top:2px dashed #378ADD;display:inline-block;"></span>1.000 MW eólicos (2016)</span>
+      <span class="est-note">est.</span><span style="font-size:12px;"> datos estimados</span>
+    </div>
+    <div style="position:relative; width:100%; height:320px;">
+      <canvas id="dualChart"></canvas>
+    </div>
+    <p class="chart-note" id="chart-note-index">Ambos ejes muestran un índice con base 1975&nbsp;=&nbsp;100, para comparar dos variables con unidades distintas. Datos EIA/MIEM desde 1980; 1975–1979 estimados. Fuentes: Banco Mundial, EIA, MIEM-DNE.</p>
+    <p class="chart-note" id="chart-note-real" style="display:none;">Eje izquierdo en USD miles de millones (GDP corriente); eje derecho en miles de bbl/día. Los ejes tienen escalas distintas — usar para leer valores absolutos, no para comparar tendencias entre series.</p>
+  </div>
+</div>
+
+<h2>La decisión política detrás del gráfico</h2>
+<p>En 2006, Uruguay hace algo poco convencional: en lugar de subsidiar las renovables con precios artificiales, abre licitaciones internacionales competitivas. Las empresas privadas compiten para ofrecer la energía más barata; el Estado garantiza reglas claras y contratos de largo plazo. En 2011 se licitaron 150 MW eólicos adicionales — llegaron ofertas de más de 20 empresas internacionales, y el gobierno contrató mucho más de lo planeado, ampliando la capacidad en más del 40% del sistema total.<a href="#fn8" class="fn-ref">[8]</a></p>
+<p>Para 2016, Uruguay tenía 1.000 MW eólicos instalados — equivalente a toda la capacidad hidroeléctrica construida en décadas — y la generación térmica cayó a casi cero en condiciones normales.<a href="#fn9" class="fn-ref">[9]</a> Ese es el mecanismo: las centrales que quemaban gasoil cada vez que bajaban los embalses dejaron de ser necesarias. El viento reemplazó no solo a las térmica sino también al riesgo climático hidráulico.</p>
+
+<h2>¿Por qué los barriles no siguen bajando?</h2>
+<p>Desde 2016, las importaciones se estabilizaron en ~40.000–43.000 bbl/día. El GDP creció otro 60% en ese período. La transición energética uruguaya descarbonizó casi exclusivamente el sector eléctrico. El transporte, la industria y la agropecuaria siguen funcionando a gasoil y nafta — representan el ~70% del consumo final de derivados de petróleo.<a href="#fn10" class="fn-ref">[10]</a></p>
+<p>Ese crecimiento orgánico de demanda (estimado en 1–2% anual en economías similares) fue compensado casi exactamente por la reducción en generación térmica. Las dos fuerzas se cancelaron, dejando la curva plana. La meseta no es estancamiento: es crecimiento de consumo tapado por sustitución renovable. Sin la transición eólica, Uruguay estaría hoy importando probablemente entre 50.000 y 55.000 bbl/día.</p>
+
+<h2>Lo que el gráfico no puede probar — y lo que sí sugiere</h2>
+<p>Una correlación temporal no es causalidad. Pero lo que sí es verificable: antes de 2008, la generación térmica representaba entre 15% y 30% de la electricidad en años secos; para 2020 era apenas 6%.<a href="#fn11" class="fn-ref">[11]</a> La caída de importaciones es congruente con ese número. Y cuando el Brent subió a USD&nbsp;120 post-invasión a Ucrania en 2022, Uruguay amortigüó ese shock mejor que sus vecinos — porque ya no dependía del petróleo para encender las luces.<a href="#fn12" class="fn-ref">[12]</a></p>
+
+<h2>Lo que viene</h2>
+<p>El gobierno uruguayo lo llama "la segunda transición energética": descarbonizar el transporte. En 2025 se vendieron 14.387 vehículos eléctricos, un crecimiento del 147% interanual.<a href="#fn13" class="fn-ref">[13]</a> Si el parque automotor se electrifica a una tasa comparable a como avanzó la generación eólica, la curva de barriles debería empezar su segundo descenso antes del final de esta década. Eso también será visible en los datos.</p>
+
+<!-- FOOTNOTES -->
+<section class="footnotes-section">
+  <p class="footnotes-title">Fuentes</p>
+  <div class="footnote-item" id="fn1"><span class="footnote-num">[1]</span><span>MIEM-DNE — <em>Series estadísticas de petróleo y derivados</em>. <a href="https://www.gub.uy/ministerio-industria-energia-mineria/datos-y-estadisticas/datos/series-estadisticas-petroleo-derivados" target="_blank" rel="noopener">gub.uy/miem</a>. CIA World Factbook — datos históricos de importaciones compilados por Worldometers/EIA.</span></div>
+  <div class="footnote-item" id="fn2"><span class="footnote-num">[2]</span><span>Banco Mundial — <em>GDP (current US$) — Uruguay</em>. <a href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD?locations=UY" target="_blank" rel="noopener">data.worldbank.org</a>. GDP 2024: USD&nbsp;80,96&nbsp;mil millones.</span></div>
+  <div class="footnote-item" id="fn3"><span class="footnote-num">[3]</span><span>Uruguay XXI — <em>Uruguay, líder en energías renovables</em>. <a href="https://www.uruguayxxi.gub.uy/es/noticias/articulo/uruguay-lider-en-energias-renovables/" target="_blank" rel="noopener">uruguayxxi.gub.uy</a>.</span></div>
+  <div class="footnote-item" id="fn4"><span class="footnote-num">[4]</span><span>U.S. Department of Commerce — <em>Uruguay Energy Commercial Guide</em> (2024): <em>"Uruguay's oil and gas sector is relatively underdeveloped, as the country does not produce hydrocarbons domestically and relies entirely on imports."</em> <a href="https://www.trade.gov/country-commercial-guides/uruguay-energy" target="_blank" rel="noopener">trade.gov</a>. Confirmado también por ANCAP: <a href="https://www.ancap.com.uy/20778/2/update-on-offshore-hydrocarbon-exploration-in-uruguay.html" target="_blank" rel="noopener">ancap.com.uy</a>.</span></div>
+  <div class="footnote-item" id="fn5"><span class="footnote-num">[5]</span><span>Worldometers (datos EIA) — <em>Uruguay Oil Reserves, Production and Consumption Statistics</em>. En 2018, Uruguay importaba el 88% de su consumo: 41.480 bbl/día de 46.998 consumidos. <a href="https://www.worldometers.info/oil/uruguay-oil/" target="_blank" rel="noopener">worldometers.info</a>.</span></div>
+  <div class="footnote-item" id="fn6"><span class="footnote-num">[6]</span><span>CAF — <em>Uruguay: líder en el uso de fuentes renovables en América Latina</em> (2021). Hasta 2005, Uruguay contaba solo con centrales hidroeléctricas del río Negro y Salto Grande más centrales a combustibles fósiles. La hidroeléctrica representaba históricamente la mayor parte de la generación. <a href="https://www.caf.com/es/actualidad/noticias/2021/07/uruguay-lider-en-el-uso-de-fuentes-renovables-en-america-latina/" target="_blank" rel="noopener">caf.com</a>.</span></div>
+  <div class="footnote-item" id="fn7"><span class="footnote-num">[7]</span><span>TheGlobalEconomy.com (datos EIA) — <em>Uruguay Diesel and heating oil consumption</em>: pico histórico de 29,52 miles de bbl/día en 2008; datos 1980–2014. <a href="https://www.theglobaleconomy.com/Uruguay/diesel_fuel_consumption/" target="_blank" rel="noopener">theglobaleconomy.com</a>.</span></div>
+  <div class="footnote-item" id="fn8"><span class="footnote-num">[8]</span><span>Yale Climate Connections — <em>Uruguay, pionero en energía renovable</em> (2024). Describe el proceso de subastas 2009–2011 y la decisión de ampliar contratos más allá del objetivo inicial de 150 MW. <a href="https://yaleclimateconnections.org/2024/05/uruguay-pionero-en-energia-renovable/" target="_blank" rel="noopener">yaleclimateconnections.org</a>.</span></div>
+  <div class="footnote-item" id="fn9"><span class="footnote-num">[9]</span><span>Wikipedia ES — <em>Energía eólica en Uruguay</em>. 1.000 MW alcanzados en septiembre 2016; 1.500 MW en octubre 2018. <a href="https://es.wikipedia.org/wiki/Energ%C3%ADa_e%C3%B3lica_en_Uruguay" target="_blank" rel="noopener">es.wikipedia.org</a>.</span></div>
+  <div class="footnote-item" id="fn10"><span class="footnote-num">[10]</span><span>MIEM-DNE — <em>Balance Energético Nacional 2022</em>. El transporte representa el 29% del consumo final; derivados de petróleo son el 40% del consumo final total. <a href="https://www.gub.uy/ministerio-industria-energia-mineria/comunicacion/noticias/uruguay-logra-90-energias-renovables-matriz-electrica-contexto-tres-anos" target="_blank" rel="noopener">gub.uy/miem</a>.</span></div>
+  <div class="footnote-item" id="fn11"><span class="footnote-num">[11]</span><span>Global Energy Monitor — <em>Perfil energético: Uruguay</em>. En 2020: 40% eólica, 30% hidráulica, 20% biomasa, 6% combustibles fósiles. <a href="https://www.gem.wiki/Perfil_energ%C3%A9tico:_Uruguay" target="_blank" rel="noopener">gem.wiki</a>.</span></div>
+  <div class="footnote-item" id="fn12"><span class="footnote-num">[12]</span><span>Xataka — <em>Así ha conseguido Uruguay blindarse del resto del mundo</em> (2024). <a href="https://www.xataka.com/energia/uruguay-ha-conseguido-que-guerras-crisis-petroleo-no-les-afecte-transicion-a-renovables-ha-sido-su-escudo" target="_blank" rel="noopener">xataka.com</a>.</span></div>
+  <div class="footnote-item" id="fn13"><span class="footnote-num">[13]</span><span>El Observador / ACAU — <em>14.387 vehículos eléctricos vendidos en Uruguay en 2025, +147% interanual</em>. <a href="https://www.elobservador.com.uy/economia-y-empresas/fuerte-aumento-del-mercado-autos-electricos-uruguay-cuantos-se-vendieron-dia-2025-n6030947" target="_blank" rel="noopener">elobservador.com.uy</a>.</span></div>
+</section>
+
+<script>
+(function () {
+  const data = [
+    [1975, 4.9,  35.0, true ],
+    [1976, 5.2,  34.0, true ],
+    [1977, 5.8,  33.0, true ],
+    [1978, 6.4,  33.5, true ],
+    [1979, 7.1,  34.0, true ],
+    [1980, 10.1, 32.0, false],
+    [1981, 11.9, 29.0, false],
+    [1982, 7.6,  26.0, false],
+    [1983, 5.8,  24.0, false],
+    [1984, 5.2,  24.0, false],
+    [1985, 4.9,  23.5, false],
+    [1986, 6.0,  23.0, false],
+    [1987, 7.5,  25.0, false],
+    [1988, 8.5,  27.0, false],
+    [1989, 8.8,  29.0, false],
+    [1990, 9.2,  31.0, false],
+    [1991, 9.9,  32.0, false],
+    [1992, 11.1, 34.0, false],
+    [1993, 12.5, 35.0, false],
+    [1994, 16.4, 37.0, false],
+    [1995, 20.0, 38.0, false],
+    [1996, 21.5, 40.0, false],
+    [1997, 22.9, 42.0, false],
+    [1998, 23.1, 43.0, false],
+    [1999, 20.9, 38.0, false],
+    [2000, 20.1, 33.0, false],
+    [2001, 18.6, 30.0, false],
+    [2002, 12.3, 27.5, false],
+    [2003, 11.2, 29.0, false],
+    [2004, 13.7, 32.0, false],
+    [2005, 17.4, 38.0, false],
+    [2006, 19.7, 45.0, false],
+    [2007, 24.1, 52.73,false],
+    [2008, 30.3, 55.0, false],
+    [2009, 31.6, 38.72,false],
+    [2010, 40.3, 38.68,false],
+    [2011, 47.2, 47.26,false],
+    [2012, 51.6, 65.0, false],
+    [2013, 57.5, 42.06,false],
+    [2014, 57.2, 54.0, false],
+    [2015, 53.1, 40.2, false],
+    [2016, 52.4, 35.2, false],
+    [2017, 58.0, 41.0, false],
+    [2018, 59.6, 41.48,false],
+    [2019, 61.5, 40.0, false],
+    [2020, 53.7, 36.0, false],
+    [2021, 60.8, 40.0, false],
+    [2022, 70.2, 41.0, false],
+    [2023, 77.2, 42.0, false],
+    [2024, 81.0, 43.0, false],
+    [2025, 85.0, 43.0, false],
+  ];
+
+  const years  = data.map(r => r[0]);
+  const gdpRaw = data.map(r => r[1]);
+  const oilRaw = data.map(r => r[2]);
+  const isEst  = data.map(r => r[3]);
+
+  const gdpBase = gdpRaw[0];
+  const oilBase = oilRaw[0];
+  const gdpIdx  = gdpRaw.map(v => Math.round(v / gdpBase * 100));
+  const oilIdx  = oilRaw.map(v => Math.round(v / oilBase * 100));
+
+  let mode = 'index';
+
+  const vLinePlugin = {
+    id: 'vlines',
+    afterDraw(chart) {
+      const ctx = chart.ctx;
+      const xA  = chart.scales.x;
+      const yA  = chart.scales.yL;
+      const milestones = [
+        [2008, '#1D9E75', 2,   [],     '1.er parque\neólico', 'top'],
+        [2016, '#378ADD', 1.5, [5, 4], '1.000 MW\neólicos',   'bottom'],
+      ];
+      milestones.forEach(([yr, color, lw, dash, label, pos]) => {
+        const idx = years.indexOf(yr);
+        const x   = xA.getPixelForValue(idx);
+        ctx.save();
+        ctx.strokeStyle = color; ctx.lineWidth = lw; ctx.setLineDash(dash);
+        ctx.beginPath(); ctx.moveTo(x, yA.top); ctx.lineTo(x, yA.bottom); ctx.stroke();
+        ctx.setLineDash([]); ctx.fillStyle = color; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+        const lines = label.split('\n');
+        const y0 = pos === 'top' ? yA.top + 11 : yA.bottom - 11 - (lines.length - 1) * 12;
+        lines.forEach((ln, i) => ctx.fillText(ln, x, y0 + i * 12));
+        ctx.restore();
+      });
+    }
+  };
+
+  const estShadePlugin = {
+    id: 'estShade',
+    beforeDraw(chart) {
+      const ctx = chart.ctx;
+      const xA  = chart.scales.x;
+      const yA  = chart.scales.yL;
+      const x0 = xA.getPixelForValue(0);
+      const x1 = xA.getPixelForValue(4);
+      ctx.save();
+      ctx.fillStyle = 'rgba(255,200,0,0.07)';
+      ctx.fillRect(x0, yA.top, x1 - x0, yA.bottom - yA.top);
+      ctx.setLineDash([3, 3]); ctx.strokeStyle = 'rgba(200,160,0,0.25)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(x1, yA.top); ctx.lineTo(x1, yA.bottom); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = 'rgba(180,130,0,0.55)'; ctx.font = '10px sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('estimado', (x0 + x1) / 2, yA.top + 12);
+      ctx.restore();
+    }
+  };
+
+  Chart.register(vLinePlugin, estShadePlugin);
+
+  function buildDatasets(m) {
+    const gdpData = m === 'index' ? gdpIdx : gdpRaw;
+    const oilData = m === 'index' ? oilIdx : oilRaw;
+    const gdpPtColor = isEst.map(e => e ? 'rgba(216,90,48,0.35)' : '#D85A30');
+    const oilPtColor = isEst.map(e => e ? 'rgba(95,94,90,0.35)'  : '#5F5E5A');
+
+    return [
+      {
+        label: m === 'index' ? 'GDP (índice 1975=100)' : 'GDP (USD miles de millones)',
+        data: gdpData,
+        borderColor: '#D85A30',
+        backgroundColor: 'rgba(216,90,48,0.06)',
+        borderWidth: 2.5, fill: false, tension: 0.35,
+        pointRadius: data.map((_, i) => i % 2 === 0 ? 3 : 0),
+        pointBackgroundColor: gdpPtColor,
+        pointBorderColor: 'transparent',
+        yAxisID: 'yL',
+      },
+      {
+        label: m === 'index' ? 'Petróleo (índice 1975=100)' : 'Petróleo importado (miles bbl/día)',
+        data: oilData,
+        borderColor: '#5F5E5A',
+        backgroundColor: 'rgba(95,94,90,0.06)',
+        borderWidth: 2, fill: false, tension: 0.35,
+        pointRadius: data.map((_, i) => i % 2 === 0 ? 3 : 0),
+        pointBackgroundColor: oilPtColor,
+        pointBorderColor: 'transparent',
+        yAxisID: 'yR',
+      }
+    ];
+  }
+
+  function buildScales(m) {
+    if (m === 'index') {
+      return {
+        x: { ticks: { color: '#888', autoSkip: false, maxRotation: 45, callback: (_, i) => years[i] % 5 === 0 ? years[i] : '' }, grid: { color: 'rgba(0,0,0,0.05)' } },
+        yL: { type: 'linear', position: 'left',  min: 0, max: 1800,
+              ticks: { color: '#D85A30', callback: v => v },
+              grid: { color: 'rgba(0,0,0,0.05)' },
+              title: { display: true, text: 'Índice GDP (1975=100)', color: '#D85A30', font: { size: 11 } } },
+        yR: { type: 'linear', position: 'right', min: 0, max: 1800,
+              ticks: { color: '#5F5E5A', callback: v => v },
+              grid: { drawOnChartArea: false },
+              title: { display: true, text: 'Índice petróleo (1975=100)', color: '#5F5E5A', font: { size: 11 } } }
+      };
+    } else {
+      return {
+        x: { ticks: { color: '#888', autoSkip: false, maxRotation: 45, callback: (_, i) => years[i] % 5 === 0 ? years[i] : '' }, grid: { color: 'rgba(0,0,0,0.05)' } },
+        yL: { type: 'linear', position: 'left',  min: 0,
+              ticks: { color: '#D85A30', callback: v => '$' + v + 'B' },
+              grid: { color: 'rgba(0,0,0,0.05)' },
+              title: { display: true, text: 'GDP corriente (USD miles de millones)', color: '#D85A30', font: { size: 11 } } },
+        yR: { type: 'linear', position: 'right', min: 0,
+              ticks: { color: '#5F5E5A', callback: v => v + 'k' },
+              grid: { drawOnChartArea: false },
+              title: { display: true, text: 'Importaciones (miles bbl/día)', color: '#5F5E5A', font: { size: 11 } } }
+      };
+    }
+  }
+
+  const ctx = document.getElementById('dualChart').getContext('2d');
+  const chart = new Chart(ctx, {
+    type: 'line',
+    data: { labels: years.map((_, i) => i), datasets: buildDatasets('index') },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: items => 'Año ' + years[items[0].dataIndex] + (isEst[items[0].dataIndex] ? ' (estimado)' : ''),
+            label: item => {
+              const i = item.dataIndex;
+              if (mode === 'index') {
+                return item.datasetIndex === 0
+                  ? '  GDP: índice ' + gdpIdx[i] + '  (USD ' + gdpRaw[i].toFixed(1) + 'B)'
+                  : '  Petróleo: índice ' + oilIdx[i] + '  (' + oilRaw[i].toFixed(1) + 'k bbl/día)';
+              } else {
+                return item.datasetIndex === 0
+                  ? '  GDP: USD ' + gdpRaw[i].toFixed(1) + ' mil millones'
+                  : '  Petróleo: ' + oilRaw[i].toFixed(1) + 'k bbl/día';
+              }
+            }
+          }
+        }
+      },
+      scales: buildScales('index')
+    }
+  });
+
+  window.setMode = function (m) {
+    mode = m;
+    chart.data.datasets = buildDatasets(m);
+    chart.options.scales = buildScales(m);
+    chart.update();
+    document.getElementById('btn-index').classList.toggle('active', m === 'index');
+    document.getElementById('btn-real').classList.toggle('active', m === 'real');
+    document.getElementById('chart-note-index').style.display = m === 'index' ? '' : 'none';
+    document.getElementById('chart-note-real').style.display  = m === 'real'  ? '' : 'none';
+  };
+})();
+</script>

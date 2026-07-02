@@ -1,0 +1,10 @@
+{% if page.ai_disclosure %}
+{% assign lang = page.lang | default: site.lang | default: "en" %}
+<aside class="ai-disclosure">
+  <span class="ai-disclosure-icon">&#9881;</span>
+  <div>
+    <strong>{% if lang == "es" %}Asistido por IA{% else %}AI-assisted{% endif %}</strong>
+    <p>{{ page.ai_disclosure }}</p>
+  </div>
+</aside>
+{% endif %}

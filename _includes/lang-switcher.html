@@ -1,0 +1,38 @@
+{% assign lang = page.lang | default: site.lang | default: "en" %}
+{% assign t = site.data.i18n[lang] %}
+
+{% comment %} Try to find a translation of this page/post {% endcomment %}
+{% assign switch_url = nil %}
+
+{% if page.ref %}
+  {% comment %} Look for a post or page with the same ref in the other language {% endcomment %}
+  {% assign other_lang = "es" %}
+  {% if lang == "es" %}{% assign other_lang = "en" %}{% endif %}
+
+  {% for p in site.posts %}
+    {% if p.ref == page.ref and p.lang == other_lang %}
+      {% assign switch_url = p.url | relative_url %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% unless switch_url %}
+    {% for p in site.pages %}
+      {% if p.ref == page.ref and p.lang == other_lang %}
+        {% assign switch_url = p.url | relative_url %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endunless %}
+{% endif %}
+
+{% comment %} Fallback: link to the other language's home {% endcomment %}
+{% unless switch_url %}
+  {% if lang == "es" %}
+    {% assign switch_url = "/" | relative_url %}
+  {% else %}
+    {% assign switch_url = "/es/" | relative_url %}
+  {% endif %}
+{% endunless %}
+
+<a href="{{ switch_url }}" class="lang-switch" title="{{ t.switch_lang_label }}">{{ t.switch_lang }}</a>
