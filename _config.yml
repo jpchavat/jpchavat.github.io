@@ -18,7 +18,6 @@ linkedin_username: jpchavat
 
 # SEO / Open Graph
 logo: /assets/avatar.jpg
-image: /assets/og-image.jpg
 twitter:
   username: jpchavat
   card: summary_large_image
@@ -45,11 +44,17 @@ defaults:
     values:
       layout: "post"
       lang: "en"
-      image: /assets/og-image.jpg
+      image:
+        path: /assets/og-image.jpg
+        width: 1200
+        height: 630
   - scope:
       path: ""
       type: "pages"
     values:
       layout: "page"
       lang: "en"
-      image: /assets/og-image.jpg
+      image:
+        path: /assets/og-image.jpg
+        width: 1200
+        height: 630
