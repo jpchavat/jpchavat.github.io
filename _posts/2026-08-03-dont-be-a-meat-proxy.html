@@ -1,0 +1,33 @@
+---
+layout: quote
+title: "Don't be a meat proxy"
+date: 2026-08-03
+lang: en
+ref: meat-proxy
+tags: [Agentic AI, Code Review, Developer Role]
+quote: "I don't need a meat proxy in between."
+source_author: "Niklas Gruhn"
+source_title: "Don't be a meat proxy"
+source_url: "https://gruhn.me/blog/2026-08-03/"
+source_label: "Read on gruhn.me"
+hero_image: /assets/posts/meat-proxy.jpg
+hero_image_alt: "Abstract painting: a dense, chaotic field of dark pixelated fragments on the left dissolving into calm, near-empty cream space on the right."
+hero_image_width: 1448
+hero_image_height: 1086
+hero_image_caption: "Generated with GPT-5.6 over many prompting iterations. Not being a meat proxy."
+ai_disclosure: "Cover image generated with GPT-5.6 across several rounds of iterative prompting. The text got the same treatment: drafted with AI, then pushed well past iteration zero."
+---
+
+<p>I was reading <a href="{{ page.source_url }}" target="_blank" rel="noopener">this short piece</a> by Niklas Gruhn and recognized myself in it immediately. Same situation, same feelings. I've been on both ends of it. I've pasted the wall of text, and I've received it, and receiving it is worse. Something in your brain flags it before you finish the first line, and it makes sense. AI produces brilliant things sometimes, but most of the time it produces the average of everything ever written about the topic, and we all have a pattern matcher that detects the average in milliseconds (not proof, but not a doubt either).</p>
+
+<p>I agree with Gruhn, and he's explicit about it himself: by all means, prompt AI. The problem was never the tool, it's stopping at iteration zero. Where I'd put it a bit differently is the fix. I don't think you necessarily have to write the thing in your own words. You have to read it, criticize it, guide it, jitter it, kick it once and again until it says something you would actually defend. The certificate isn't prose coming out of your own fingers, it's how many rounds it survived before you sent it.</p>
+
+<p>I won't play the hypocrite here: I use AI a lot, this entry included. Same with code, where I barely write a line anymore, and I don't think I need to in order to ship something good. I guide it toward what I think good looks like, I question it, and I set it up to question me back. What I try not to do, in prose or in code, is stop at the first one.</p>
+
+<p>There's something else in his code review example, though. It doesn't bother me exactly, it just happens, constantly, and to me it reads as a signal. Follow that loop all the way around. I ask an AI to implement the feature. I ask it to open the PR. A reviewer feeds my PR to their AI. Their AI writes feedback. They paste it back. I paste it into the same session that wrote the code. Iterate. Repeat until the meat proxy on the other side pastes "LGTM".</p>
+
+<p>Now count the humans doing work in that loop. What's left is the ceremony: the handoffs, the notifications, the waiting, with a person standing at each junction contributing nothing but copy-paste and latency. If both ends of the process are the same machine, the humans in the middle aren't reviewing. They're transport.</p>
+
+<p>So maybe being a meat proxy isn't only bad manners. Maybe it's a signal, the same signal a manual step in a deploy pipeline used to be: something here should have been closed end to end and wasn't. When I catch myself relaying, the question isn't just <em>should I have written this myself?</em> It's <em>why is there a human standing in this position at all?</em></p>
+
+<p>There are only two answers. Either that human is there for a reason: judgment, accountability, taste, the context only they have. Every one of those is a very valid reason to me, and I'd defend all of them. But then the human has to be exercising that reason, not pasting. Or there is no reason, and then the honest move isn't to write a nicer message: it's to go build the thing that connects both ends and takes the human out of the middle.</p>
