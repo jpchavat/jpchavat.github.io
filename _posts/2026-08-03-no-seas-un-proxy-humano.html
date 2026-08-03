@@ -1,0 +1,33 @@
+---
+layout: quote
+title: "No seas un proxy humano"
+date: 2026-08-03
+lang: es
+ref: meat-proxy
+tags: [IA Agéntica, Code Review, Rol del Desarrollador]
+quote: "I don't need a meat proxy in between."
+source_author: "Niklas Gruhn"
+source_title: "Don't be a meat proxy"
+source_url: "https://gruhn.me/blog/2026-08-03/"
+source_label: "Leer en gruhn.me"
+hero_image: /assets/posts/meat-proxy.jpg
+hero_image_alt: "Pintura abstracta: un campo denso y caótico de fragmentos oscuros y pixelados a la izquierda que se disuelve en un espacio crema, calmo y casi vacío, a la derecha."
+hero_image_width: 1448
+hero_image_height: 1086
+hero_image_caption: "Generada con GPT-5.6 tras muchas iteraciones de prompting. No haciendo de proxy humano."
+ai_disclosure: "Imagen de portada generada con GPT-5.6 en varias rondas de prompting iterativo. El texto pasó por lo mismo: escrito con IA y después pateado bastante más allá de la iteración cero."
+---
+
+<p>Estaba leyendo <a href="{{ page.source_url }}" target="_blank" rel="noopener">este texto corto</a> de Niklas Gruhn y me reconocí a mí mismo enseguida. Misma situación, mismas sensaciones. Estuve de los dos lados. Mandé el muro de texto, y también lo recibí, y recibirlo es peor. Algo en el cerebro lo marca antes de que termines la primera línea, y tiene sentido. La IA produce cosas brillantes a veces, pero en su mayoría resulta en el promedio de todo lo que se escribió sobre el tema, y todos tenemos un detector de patrones que reconoce el promedio en milisegundos (no tengo pruebas, pero tampoco dudas).</p>
+
+<p>Coincido con Gruhn, y él mismo lo dice explícito: usá IA, por supuesto. El problema nunca fue la herramienta, sino quedarse en la iteración cero. Aún así, tengo algunas diferencias con la solución que propone. No creo que necesariamente tengas que escribirlo con tus propias palabras. Lo que tenés que hacer es leerlo, criticarlo, guiarlo, sacudirlo, patearlo una y otra vez hasta que diga algo que estarías dispuesto a defender. El certificado no es que cada palabra haya salido de tus dedos, sino a cuántas iteraciones y sacudones sobrevivió antes de que lo mandaras.</p>
+
+<p>No quiero ser hipócrita. Uso IA todo el tiempo, incluso en la redacción de este artículo. Con el código igual, ya casi no escribo una línea, y no creo que necesite hacerlo para entregar algo de calidad. Lo guío hacia lo que me parece que está bien, lo cuestiono, y lo incito a que me cuestione a mí. Lo que trato de evitar, tanto al redactar como al implementar código, es quedarme con lo primero que sale.</p>
+
+<p>Hay algo más, en su ejemplo de code reviews. No es que me moleste exactamente, es que pasa, todo el tiempo, y para mí es una señal clarísima. El caso es este: el usuario A le pide a su IA que implemente una feature y que abra el PR. El usuario B, que es el revisor, le pasa el PR a su IA y le pide que revise y escriba un feedback. B copia y pega el feedback en el PR. El usuario A copia el feedback del PR y lo pega en la misma sesión que escribió el código. Esto itera hasta que el proxy humano del lado revisor (usuario B) escribe "LGTM".</p>
+
+<p>Ahora contá cuántos humanos agregaron valor en ese loop. La respuesta es cero. Entonces, lo que queda es la ceremonia: los traspasos, las notificaciones, la espera, con una persona parada en cada extremo aportando nada más que copy-paste y latencia. Si los dos extremos del proceso son la misma máquina, los humanos del medio no están revisando, sino que son capa de transporte.</p>
+
+<p>Así que capaz que ser un proxy humano no es solo un poco molesto para el resto, sino que puede ser una señal de que algo hay que hacer en ese punto del proceso. Igual que lo era un único paso manual en un pipeline de deployment: acá había algo que debería haberse cerrado punta a punta y no se cerró. Cuando me encuentro haciendo de proxy humano, la pregunta no es solo <em>¿no tendría que haber escrito esto yo?</em> Es <em>¿por qué hay un humano en esta posición?</em></p>
+
+<p>Hay dos respuestas posibles. O ese humano está ahí por una razón: criterio, responsabilidad, sensibilidad, el know-how y el contexto que solo esa persona tiene, entre otras cosas; para mí todas son razones muy válidas y las defiendo, pero entonces tiene que estar ejerciéndola, no solo transportando. O no hay razón, y entonces lo honesto no es escribir un mensaje más lindo: es ir a construir el eslabón que termina de conectar las dos puntas y saca al humano del medio.</p>
