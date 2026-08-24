@@ -5,7 +5,8 @@ en:
   sources: "Sources"
   switch_lang: "ES"
   switch_lang_label: "Leer en español"
-  home_intro: "Senior Engineer turned Agentic Engineer. MSc in Computer Science, currently studying Economics. Building autonomous AI systems and exploring where agentic AI meets data analysis and economic reality."
+  home_intro: "Welcome to my open notebook. I keep here whatever caught my interest: a paper, a chart, a line from someone else's post, and sometimes I add what I think about it. No ambition to be original or exhaustive; if it turns out useful to someone else, better. Senior Engineer turned Agentic Engineer (that's what they call us now 😉), MSc in Computer Science, plus some Economics on the side."
+  home_intro_link: "More about me"
 
 es:
   articles: "Artículos"
@@ -14,4 +15,5 @@ es:
   sources: "Fuentes"
   switch_lang: "EN"
   switch_lang_label: "Read in English"
-  home_intro: "Senior Engineer devenido en Agentic Engineer. MSc en Ciencias de la Computación, cursando Economía. Construyendo sistemas autónomos de IA y explorando donde la IA agéntica se cruza con el análisis de datos y la realidad económica."
+  home_intro: "Bienvenidos a mi notebook abierto. Acá guardo lo que me llamó la atención: un paper, un gráfico, un pasaje de un artículo de alguien más, y cada tanto lo que pienso al respecto. No busca ser original ni exhaustivo; lo dejo público por si a alguien más le sirve. Senior Engineer convertido en Agentic Engineer (así nos llaman ahora 😉), MSc en Computer Science, y Economía a medio camino (algún día se dará)."
+  home_intro_link: "Más sobre mí"
